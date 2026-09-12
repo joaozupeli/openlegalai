@@ -1,0 +1,16 @@
+{
+  "name": "OpenLegalAI",
+  "user": "ubuntu",
+  "install": "[ -f .env ] || cp .env.example .env; [ -f server/.env ] || cp server/.env.example server/.env; corepack enable && corepack pnpm install --frozen-lockfile",
+  "terminals": [
+    {
+      "name": "API Server",
+      "command": "corepack pnpm dev:server"
+    },
+    {
+      "name": "Web Client",
+      "command": "corepack pnpm dev"
+    }
+  ],
+  "ports": [3000, 8080]
+}
