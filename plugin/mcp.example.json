@@ -1,0 +1,12 @@
+{
+  "_comment": "Placeholder. Gere o real com `npm run config` — caminho absoluto desta maquina, nunca commitado. Mac/Linux: troque run-mcp.cmd por run-mcp.sh.",
+  "mcpServers": {
+    "openlegalai-office": {
+      "command": "C:\\ABS\\PATH\\privacy-gateway\\scripts\\run-mcp.cmd",
+      "env": {
+        "OFFICE_USER_ID": "adv-ana",
+        "OFFICE_ROLE": "advogado"
+      }
+    }
+  }
+}

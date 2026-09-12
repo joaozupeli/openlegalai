@@ -28,9 +28,13 @@ const principals = (requested.length ? requested : ['adv-ana:advogado']).map(
 );
 
 const isWindows = process.platform === 'win32';
-const launcher = isWindows
-  ? { command: 'cmd', args: ['/c', join(GATEWAY, 'scripts', 'run-mcp.cmd')] }
-  : { command: join(GATEWAY, 'scripts', 'run-mcp.sh'), args: [] };
+// The launcher is named directly on both platforms. Verified against the MCP SDK
+// client on Node 24: it resolves a .cmd on Windows without a `cmd /c` wrapper,
+// so the extra indirection would buy nothing and hide the real command.
+const launcher = {
+  command: join(GATEWAY, 'scripts', isWindows ? 'run-mcp.cmd' : 'run-mcp.sh'),
+  args: [],
+};
 
 // One server entry per principal, never one entry reused. Identity lives in the
 // process environment, so two roles sharing a process would be two people

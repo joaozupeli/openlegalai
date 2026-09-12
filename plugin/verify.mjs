@@ -28,10 +28,12 @@ const CANARIES = [
 
 const isWindows = process.platform === 'win32';
 
+/** The same command the generated config names, so this proves what ships. */
 function launcher() {
-  return isWindows
-    ? { command: 'cmd', args: ['/c', join(GATEWAY, 'scripts', 'run-mcp.cmd')] }
-    : { command: join(GATEWAY, 'scripts', 'run-mcp.sh'), args: [] };
+  return {
+    command: join(GATEWAY, 'scripts', isWindows ? 'run-mcp.cmd' : 'run-mcp.sh'),
+    args: [],
+  };
 }
 
 async function connect(userId, role) {
